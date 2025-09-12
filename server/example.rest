@@ -1,0 +1,147 @@
+@baseUrl = http://localhost:8000/api
+@token = access_token
+@category_id = 1
+@product_id = 1
+
+
+### AUTH ###
+
+
+### Register
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "name": "David",
+  "email": "david@example.com",
+  "password": "!Pass678",
+  "password_confirmation": "!Pass678"
+}
+
+
+### Login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "david@example.com",
+  "password": "!Pass678"
+}
+
+
+### Login Admin
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "Admin@78"
+}
+
+
+### Logout
+POST {{baseUrl}}/logout
+Authorization: Bearer {{token}}
+
+
+### User
+GET {{baseUrl}}/user
+Authorization: Bearer {{token}}
+
+
+### CATEGORIES ###
+
+
+### Store Category
+POST {{baseUrl}}/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New Category"
+}
+
+
+### Update Category
+PUT {{baseUrl}}/categories/{{category_id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New Category Updated"
+}
+
+
+### Destroy Category
+DELETE {{baseUrl}}/categories/{{category_id}}
+Authorization: Bearer {{token}}
+
+
+### Index Categories
+GET {{baseUrl}}/categories
+
+
+### Show Category
+GET {{baseUrl}}/categories/{{category_id}}
+
+
+### PRODUCTS ###
+
+
+### Store Product
+POST {{baseUrl}}/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "description": "Product description",
+  "price": 99.99,
+  "category_id": "{{category_id}}",
+  "colors": [
+    {
+      "name": "Red",
+      "hex_code": "#FF0000"
+    },
+    {
+      "name": "Black",
+      "hex_code": "#000000"
+    }
+  ]
+}
+
+
+### Update Product
+PUT {{baseUrl}}/products/{{product_id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "description": "Updated description",
+  "price": 79.99,
+  "category_id": "{{category_id}}",
+  "colors": [
+    {
+      "name": "Blue",
+      "hex_code": "#0000FF"
+    },
+    {
+      "name": "White",
+      "hex_code": "#FFFFFF"
+    }
+  ]
+}
+
+
+### Destroy Product
+DELETE {{baseUrl}}/products/{{product_id}}
+Authorization: Bearer {{token}}
+
+
+### Index Products
+GET {{baseUrl}}/products
+
+
+### Show Product
+GET {{baseUrl}}/products/{{product_id}}
