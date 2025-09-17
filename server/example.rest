@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:8000/api
-@token = access_token
-@category_id = 1
+@token = 32|XdGP41PvOAyqcrDsUk0o8HRhPQkFQder6t8UbEl0eada6003
+@category_id = 6
 @product_id = 1
 
 
